@@ -1,0 +1,341 @@
+<!-- from other file -->
+      <div class=" col-md-12 text-center userAuth unauthenticated pull-right">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#registerModal"
+        >
+          Register
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          data-toggle="modal"
+          data-target="#loginModal"
+        >
+          Login
+        </button>
+      </div>
+      <div class="col-md-12 userAuth authenticated pull-right">
+        <span class="user-info">
+          <img src="./user.svg" alt="User" class="rounded-circle" />
+        </span>
+        <button type="button" class="btn btn-success" id="logout">
+          Logout
+        </button>
+      </div>
+
+
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="registerForm" method="POST">
+            <div class="modal-header">
+              <h4 class="modal-title" id="registerModalLabel">Register</h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+      <div class="modal-body">
+              <div class="form-group">
+                <label for="recipient-name" class="control-label"
+                  >First Name:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="registerFirstName"
+                />
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="control-label"
+                  >Last Name:</label
+                >
+                <input type="text" class="form-control" id="registerLastName" />
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">Email:</label>
+                <input type="text" class="form-control" id="registerEmail" />
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="control-label"
+                  >Password:</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="registerPassword"
+                />
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="control-label"
+                  >Confirm Password:</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="registerConfirmPassword"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary" id="doRegister">
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="Login"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="loginForm" method="POST">
+            <div class="modal-header">
+              <h4 class="modal-title" id="loginModalLabel">Login</h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">Email:</label>
+                <input type="text" class="form-control" id="loginEmail" />
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="control-label"
+                  >Password:</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="loginPassword"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary" id="doLogin">
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="addBookingModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="Add Booking"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form method="POST" id="bookingForm" name="bookingForm">
+            <div class="modal-header">
+              <h4 class="modal-title" id="addBookingModalLabel">
+                Your Details
+              </h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  required
+                  placeholder="Enter name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="mobile">Mobile</label>
+                <input
+                  type="mobile"
+                  class="form-control"
+                  id="mobile"
+                  required
+                  placeholder="Enter Mobile"
+                />
+              </div>
+              <div class="form-group">
+                <label for="date">Date</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="wash-date"
+                  required
+                  placeholder="Enter Date of Car Wash"
+                />
+              </div>
+              <div class="form-group">
+                <label for="time">Time</label>
+                <input
+                  type="time"
+                  class="form-control"
+                  id="wash-time"
+                  required
+                  placeholder="Enter Time of Car Wash"
+                />
+              </div>
+              <h3>Your Location</h3>
+
+              <div class="form-group">
+                <label for="door">Door /Flat No.</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="door"
+                  placeholder="Enter Door/Flat No."
+                />
+              </div>
+              <div class="form-group">
+                <label for="street">Street No./Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="street"
+                  placeholder="Enter Street No./Name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="sub-area">Sub Area</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="sub_area"
+                  placeholder="Enter Sub Area"
+                />
+              </div>
+              <div class="form-group">
+                <label for="main-area">Main Area</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="main_area"
+                  placeholder="Enter Main Area"
+                />
+              </div>
+              <div class="form-group">
+                <label for="pin">Pin Code</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="pin"
+                  placeholder="Enter Area Pin Code"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary addValue">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="messageModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="Message"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="messageModalLabel">Message</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-footer">
+            <div class="pre-auth">
+              <button
+                type="button"
+                class="btn btn-default pull-left"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <span class="">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  data-dismiss="modal"
+                  data-toggle="modal"
+                  data-target="#registerModal"
+                >
+                  Register
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  data-dismiss="modal"
+                  data-toggle="modal"
+                  data-target="#loginModal"
+                >
+                  Login
+                </button>
+              </span>
+            </div>
+            <div class="post-auth"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End from other file -->

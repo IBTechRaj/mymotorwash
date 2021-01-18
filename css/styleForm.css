@@ -1,0 +1,68 @@
+header h1 {
+  display: inline-block;
+  margin: 10px 0;
+}
+header + hr {
+  margin: 10px 0;
+}
+#bookings p,
+#bookings p.lead {
+  margin: 0;
+}
+.sign-buttons {
+  position: absolute;
+  z-index: 10;
+  float: right !important;
+}
+.slot {
+  z-index: 10;
+}
+.btn.btn-primary {
+  /* background: transparent; */
+  color: white;
+  padding: 12px 30px;
+  /* border: 1px solid #fb6a33; */
+  border-radius: 5px;
+}
+.btn.btn-success {
+  /* background: transparent; */
+  color: white;
+  padding: 12px 30px;
+  /* border: 1px solid #fb6a33; */
+  border-radius: 5px;
+}
+.userAuth {
+  display: block;
+  margin: 20px 0 0;
+}
+.modal-header:last-child {
+  border-bottom: 0;
+}
+.card {
+  display: inline-block;
+  margin: 1em;
+  max-width: calc(25% - 2em);
+}
+#bookings {
+  margin-left: -1em;
+  margin-right: -1em;
+  display: flex;
+  flex-wrap: wrap;
+}
+.user-info {
+  display: inline-block;
+  margin: 0 0.5em;
+}
+.user-info img {
+  display: inline-block;
+  max-width: 2em;
+}
+
+.auth-true .authenticated,
+.auth-false .unauthenticated {
+  display: block;
+}
+.auth-true .unauthenticated,
+.auth-false .authenticated {
+  display: none;
+}

@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Real estate web template by webthemez.com"
+    />
+    <meta name="author" content="webthemez" />
+    <title>Mike's Motor Wash Service</title>
+    <!-- core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/animate.min.css" rel="stylesheet" />
+    <link href="css/owl.carousel.css" rel="stylesheet" />
+    <link href="css/owl.transitions.css" rel="stylesheet" />
+    <link href="css/prettyPhoto.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/styleForm.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/favicon.ico" />
+  </head>
+
+  <body id="home" class="auth-false">
+    <header id="header">
+      <nav
+        id="main-nav"
+        class="navbar navbar-default navbar-fixed-top"
+        role="banner"
+      >
+        <div class="container">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"
+              ><img src="images/logo.png" alt="logo"
+            /></a>
+          </div>
+
+          <div class="collapse navbar-collapse navbar-right">
+            <ul class="nav navbar-nav">
+              <li class="scroll active"><a href="#home">Home</a></li>
+              <li class="scroll"><a href="#services">Services</a></li>
+              <li class="scroll"><a href="#about">Who We</a></li>
+              <li class="scroll"><a href="#pricing">Pricing</a></li>
+              <li class="scroll"><a href="#portfolio">Gallery</a></li>
+              <li class="scroll"><a href="#our-team">Team</a></li>
+              <li class="scroll"><a href="#contact-us">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <!--/.container-->
+      </nav>
+      <!--/nav-->
+    </header>
+    <!--/header-->
+
+    <!-- Register Login Logout buttons -->
+    <div class="col-md-12 sign-buttons pull-right">
+      <div class="userAuth unauthenticated pull-right">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#registerModal"
+        >
+          Register
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          data-toggle="modal"
+          data-target="#loginModal"
+        >
+          Login
+        </button>
+      </div>
+      <div class="userAuth authenticated pull-right">
+        <!-- <span class="user-info">
+          <img src="./user.svg" alt="User" class="rounded-circle" />
+        </span> -->
+        <span class="user-name"></span>
+        <button type="button" class="btn btn-success" id="logout">
+          Logout
+        </button>
+      </div>
+
+      <main class="authenticated">
+        <center>
+          <button
+            type="button"
+            class="btn btn-primary slot"
+            data-toggle="modal"
+            data-target="#addBookingModal"
+          >
+            Book Your Slot
+          </button>
+        </center>
+        <div id="bookings"></div>
+      </main>
+    </div>
+    <!-- begin registration modal form  -->
+
+    <div
+      class="modal fade"
+      id="registerModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="Register"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="registerForm" method="POST">
+            <div class="modal-header">
+              <h4 class="modal-title" id="registerModalLabel">Register</h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="recipient-name" class="control-label"
+                  >First Name:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="registerFirstName"
+                />
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="control-label"
+                  >Last Name:</label
+                >
+                <input type="text" class="form-control" id="registerLastName" />
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">Email:</label>
+                <input type="text" class="form-control" id="registerEmail" />
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="control-label"
+                  >Password:</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="registerPassword"
+                />
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="control-label"
+                  >Confirm Password:</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="registerConfirmPassword"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary" id="doRegister">
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- end registration modal form  -->
+    <!-- start login modal form -->
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="Login"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="loginForm" method="POST">
+            <div class="modal-header">
+              <h4 class="modal-title" id="loginModalLabel">Login</h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">Email:</label>
+                <input type="text" class="form-control" id="loginEmail" />
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="control-label"
+                  >Password:</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="loginPassword"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary" id="doLogin">
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- end login modal form  -->
+
+    <!-- start booking form  -->
+    <div
+      class="modal fade"
+      id="addBookingModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="Add Booking"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form method="POST" id="bookingForm" name="bookingForm">
+            <div class="modal-header">
+              <h4 class="modal-title" id="addBookingModalLabel">
+                Your Details
+              </h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  required
+                  placeholder="Enter name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="mobile">Mobile</label>
+                <input
+                  type="mobile"
+                  class="form-control"
+                  id="mobile"
+                  required
+                  placeholder="Enter Mobile"
+                />
+              </div>
+              <div class="form-group">
+                <label for="date">Date</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="wash-date"
+                  required
+                  placeholder="Enter Date of Car Wash"
+                />
+              </div>
+              <div class="form-group">
+                <label for="time">Time</label>
+                <input
+                  type="time"
+                  class="form-control"
+                  id="wash-time"
+                  required
+                  placeholder="Enter Time of Car Wash"
+                />
+              </div>
+              <h3>Your Location</h3>
+
+              <div class="form-group">
+                <label for="door">Door /Flat No.</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="door"
+                  placeholder="Enter Door/Flat No."
+                />
+              </div>
+              <div class="form-group">
+                <label for="street">Street No./Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="street"
+                  placeholder="Enter Street No./Name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="sub-area">Sub Area</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="sub_area"
+                  placeholder="Enter Sub Area"
+                />
+              </div>
+              <div class="form-group">
+                <label for="main-area">Main Area</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="main_area"
+                  placeholder="Enter Main Area"
+                />
+              </div>
+              <div class="form-group">
+                <label for="pin">Pin Code</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="pin"
+                  placeholder="Enter Area Pin Code"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary addValue">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- end booking form  -->
+
+    <!-- start modal dialog  -->
+    <div
+      class="modal fade"
+      id="messageModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="Message"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="messageModalLabel">Message</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-footer">
+            <div class="pre-auth">
+              <button
+                type="button"
+                class="btn btn-default pull-left"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <span class="">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  data-dismiss="modal"
+                  data-toggle="modal"
+                  data-target="#registerModal"
+                >
+                  Register
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  data-dismiss="modal"
+                  data-toggle="modal"
+                  data-target="#loginModal"
+                >
+                  Login
+                </button>
+              </span>
+            </div>
+            <div class="post-auth"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end modal dialog  -->
+
+    <section id="main-slider">
+      <div class="owl-carousel">
+        <div class="item" style="background-image: url(images/slider/bg1.jpg)">
+          <div class="slider-inner">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="carousel-content">
+                    <h2>Make Your <span>Car</span> Shine</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/.item-->
+        <div class="item" style="background-image: url(images/slider/bg2.jpg)">
+          <div class="slider-inner">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="carousel-content">
+                    <h2>Get Our <span>Amazing</span> Service</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/.item-->
+      </div>
+      <!--/.owl-carousel-->
+    </section>
+    <!--/#main-slider-->
+
+    <section id="hero-text" class="wow fadeIn">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9">
+            <h2>Make your Car Shine with Our Service</h2>
+            <p>
+              We are the pioneers is rendering home service for your car wash.
+            </p>
+          </div>
+          <div class="col-sm-3 text-right">
+            <a class="btn btn-primary btn-lg" href="#portfolio">Gallery</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/#hero-text-->
+
+    <section id="services">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title text-center wow fadeInDown">Services</h2>
+          <p class="text-center wow fadeInDown">
+            Water wash <br />
+            Interial cleaning<br />
+            Fixing minor mechanical issues<br />
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="features">
+            <div
+              class="col-md-4 col-sm-6 wow fadeInUp"
+              data-wow-duration="300ms"
+              data-wow-delay="0ms"
+            >
+              <div class="media service-box">
+                <div class="pull-left">
+                  <i class="fa fa-heart"></i>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Car Checkup</h4>
+                  <p>
+                    Backed by some of the biggest names in the industry, Firefox
+                    OS is an open platform that fosters greater
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--/.col-md-4-->
+
+            <div
+              class="col-md-4 col-sm-6 wow fadeInUp"
+              data-wow-duration="300ms"
+              data-wow-delay="100ms"
+            >
+              <div class="media service-box">
+                <div class="pull-left">
+                  <i class="fa fa-compass"></i>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Car Wash</h4>
+                  <p>
+                    Backed by some of the biggest names in the industry, Firefox
+                    OS is an open platform that fosters greater
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--/.col-md-4-->
+
+            <div
+              class="col-md-4 col-sm-6 wow fadeInUp"
+              data-wow-duration="300ms"
+              data-wow-delay="200ms"
+            >
+              <div class="media service-box">
+                <div class="pull-left">
+                  <i class="fa fa-bell"></i>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Car Repair</h4>
+                  <p>
+                    Morbi vitae tortor tempus, placerat leo et, suscipit lectus.
+                    Phasellus ut euismod massa, eu eleifend ipsum.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--/.col-md-4-->
+
+            <div
+              class="col-md-4 col-sm-6 wow fadeInUp"
+              data-wow-duration="300ms"
+              data-wow-delay="300ms"
+            >
+              <div class="media service-box">
+                <div class="pull-left">
+                  <i class="fa fa-cube"></i>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Car Paint</h4>
+                  <p>
+                    Morbi vitae tortor tempus, placerat leo et, suscipit lectus.
+                    Phasellus ut euismod massa, eu eleifend ipsum.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--/.col-md-4-->
+
+            <div
+              class="col-md-4 col-sm-6 wow fadeInUp"
+              data-wow-duration="300ms"
+              data-wow-delay="400ms"
+            >
+              <div class="media service-box">
+                <div class="pull-left">
+                  <i class="fa fa-yelp"></i>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Car Decor</h4>
+                  <p>
+                    Morbi vitae tortor tempus, placerat leo et, suscipit lectus.
+                    Phasellus ut euismod massa, eu eleifend ipsum.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--/.col-md-4-->
+
+            <div
+              class="col-md-4 col-sm-6 wow fadeInUp"
+              data-wow-duration="300ms"
+              data-wow-delay="500ms"
+            >
+              <div class="media service-box">
+                <div class="pull-left">
+                  <i class="fa fa-life-ring"></i>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Car Polish</h4>
+                  <p>
+                    Morbi vitae tortor tempus, placerat leo et, suscipit lectus.
+                    Phasellus ut euismod massa, eu eleifend ipsum.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--/.col-md-4-->
+          </div>
+        </div>
+        <!--/.row-->
+      </div>
+      <!--/.container-->
+    </section>
+    <!--/#services-->
+
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title text-center wow fadeInDown">Who We Are</h2>
+          <p class="text-center wow fadeInDown">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            eget risus vitae massa <br />
+            semper aliquam quis mattis quam.
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6 wow fadeInLeft">
+            <img class="img-responsive" src="images/about.png" alt="" />
+          </div>
+
+          <div class="col-sm-6 wow fadeInRight">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+              eget risus vitae massa semper aliquam quis mattis quam. Morbi
+              vitae tortor tempus, placerat leo et, suscipit lectus. Phasellus
+              ut euismod massa, eu eleifend ipsum.
+            </p>
+
+            <p>
+              Nulla eu neque commodo, dapibus dolor eget, dictum arcu. In nec
+              purus eu tellus consequat ultricies. Donec feugiat tempor turpis,
+              rutrum sagittis mi venenatis at. Sed molestie lorem a blandit
+              congue. Ut pellentesque odio quis leo volutpat, vitae vulputate
+              felis condimentmolestie lorem a blandit congue. Ut pellentesque
+              odio quis leo volutpat, vitae vulputate felis condimentum.
+            </p>
+
+            <p>
+              Praesent vulputate fermentum lorem, id rhoncus sem vehicula eu.
+              Quisque ullamcorper, orci adipiscing auctor viverra, velit arcu
+              malesuada metus, in volutpat tellus sem at justo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/#about-->
+
+    <section id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title text-center wow fadeInDown">Our Pricing</h2>
+          <p class="text-center wow fadeInDown">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            eget risus vitae massa <br />
+            semper aliquam quis mattis quam.
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4 menuItem">
+            <ul class="menu">
+              <li>
+                Car Wash <span class="price">Rs.150</span>
+                <div class="detail">ipsum dolor sit amet, consectetur</div>
+              </li>
+              <li>
+                Car Repair <span class="price">Rs.150</span>
+                <div class="detail">ipsum dolor sit amet dskfj consectetur</div>
+              </li>
+              <li>
+                Car Checkup <span class="price">Rs.150</span>
+                <div class="detail">Semper aliquam quis mattis quam</div>
+              </li>
+              <li>
+                Wheel Alignment <span class="price">Rs.150</span>
+                <div class="detail">ipsum dolor sit amet, consectetur</div>
+              </li>
+              <li>
+                Tyer Change <span class="price">Rs.150</span>
+                <div class="detail">ipsum dolor sit amet dskfj consectetur</div>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 menuItem">
+            <ul class="menu">
+              <li>
+                Car Painting <span class="price">Rs.150</span>
+                <div class="detail">ipsum dolor sit amet, consectetur</div>
+              </li>
+              <li>
+                Music System <span class="price">Rs.150</span>
+                <div class="detail">ipsum dolor sit amet dskfj consectetur</div>
+              </li>
+              <li>
+                Car Interior <span class="price">Rs.150</span>
+                <div class="detail">Semper aliquam quis mattis quam</div>
+              </li>
+              <li>
+                Car Exterior <span class="price">Rs.150</span>
+                <div class="detail">ipsum dolor sit amet, consectetur</div>
+              </li>
+              <li>
+                Car Modification <span class="price">Rs.150</span>
+                <div class="detail">ipsum dolor sit amet dskfj consectetur</div>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 menuItem">
+            <ul class="menu">
+              <li>
+                Car Polishing <span class="price">Rs.150</span>
+                <div class="detail">ipsum dolor sit amet, consectetur</div>
+              </li>
+              <li>
+                Scrach Remove <span class="price">Rs.150</span>
+                <div class="detail">ipsum dolor sit amet dskfj consectetur</div>
+              </li>
+              <li>
+                Denting <span class="price">Rs.150</span>
+                <div class="detail">Semper aliquam quis mattis quam</div>
+              </li>
+              <li>
+                Provision Store <span class="price">Rs.150</span>
+                <div class="detail">ipsum dolor sit amet, consectetur</div>
+              </li>
+              <li>
+                Car Salon <span class="price">Rs.150</span>
+                <div class="detail">ipsum dolor sit amet dskfj consectetur</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/#pricing-->
+
+    <section id="portfolio">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title text-center wow fadeInDown">Gallery</h2>
+          <p class="text-center wow fadeInDown">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            eget risus vitae massa <br />
+            semper aliquam quis mattis quam.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <ul class="portfolio-filter">
+            <li><a class="active" href="#" data-filter="*">Show All</a></li>
+            <li><a href="#" data-filter=".designing">Exterior</a></li>
+            <li><a href="#" data-filter=".mobile">Interior</a></li>
+          </ul>
+          <!--/#portfolio-filter-->
+        </div>
+
+        <div class="portfolio-items">
+          <div class="portfolio-item designing">
+            <div class="portfolio-item-inner">
+              <img class="img-responsive" src="images/portfolio/1.jpg" alt="" />
+              <div class="portfolio-info">
+                <a
+                  class="preview"
+                  href="images/portfolio/1.jpg"
+                  rel="prettyPhoto"
+                  ><i class="fa fa-search"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!--/.portfolio-item-->
+
+          <div class="portfolio-item mobile development">
+            <div class="portfolio-item-inner">
+              <img class="img-responsive" src="images/portfolio/2.jpg" alt="" />
+              <div class="portfolio-info">
+                <a
+                  class="preview"
+                  href="images/portfolio/2.jpg"
+                  rel="prettyPhoto"
+                  ><i class="fa fa-search"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!--/.portfolio-item-->
+
+          <div class="portfolio-item designing">
+            <div class="portfolio-item-inner">
+              <img class="img-responsive" src="images/portfolio/3.jpg" alt="" />
+              <div class="portfolio-info">
+                <a
+                  class="preview"
+                  href="images/portfolio/3.jpg"
+                  rel="prettyPhoto"
+                  ><i class="fa fa-search"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!--/.portfolio-item-->
+
+          <div class="portfolio-item mobile">
+            <div class="portfolio-item-inner">
+              <img class="img-responsive" src="images/portfolio/4.jpg" alt="" />
+              <div class="portfolio-info">
+                <a
+                  class="preview"
+                  href="images/portfolio/4.jpg"
+                  rel="prettyPhoto"
+                  ><i class="fa fa-search"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!--/.portfolio-item-->
+
+          <div class="portfolio-item designing development">
+            <div class="portfolio-item-inner">
+              <img class="img-responsive" src="images/portfolio/5.jpg" alt="" />
+              <div class="portfolio-info">
+                <a
+                  class="preview"
+                  href="images/portfolio/5.jpg"
+                  rel="prettyPhoto"
+                  ><i class="fa fa-search"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!--/.portfolio-item-->
+
+          <div class="portfolio-item mobile">
+            <div class="portfolio-item-inner">
+              <img class="img-responsive" src="images/portfolio/6.jpg" alt="" />
+              <div class="portfolio-info">
+                <a
+                  class="preview"
+                  href="images/portfolio/6.jpg"
+                  rel="prettyPhoto"
+                  ><i class="fa fa-search"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!--/.portfolio-item-->
+
+          <div class="portfolio-item designing development">
+            <div class="portfolio-item-inner">
+              <img class="img-responsive" src="images/portfolio/7.jpg" alt="" />
+              <div class="portfolio-info">
+                <a
+                  class="preview"
+                  href="images/portfolio/7.jpg"
+                  rel="prettyPhoto"
+                  ><i class="fa fa-search"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!--/.portfolio-item-->
+
+          <div class="portfolio-item mobile">
+            <div class="portfolio-item-inner">
+              <img class="img-responsive" src="images/portfolio/8.jpg" alt="" />
+              <div class="portfolio-info">
+                <a
+                  class="preview"
+                  href="images/portfolio/8.jpg"
+                  rel="prettyPhoto"
+                  ><i class="fa fa-search"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!--/.portfolio-item-->
+        </div>
+      </div>
+      <!--/.container-->
+    </section>
+    <!--/#portfolio-->
+
+    <section id="our-team">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title text-center wow fadeInDown">
+            Our Workforce
+          </h2>
+          <p class="text-center wow fadeInDown">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            eget risus vitae massa <br />
+            semper aliquam quis mattis quam.
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <div
+              class="team-member wow fadeInUp"
+              data-wow-duration="400ms"
+              data-wow-delay="0ms"
+            >
+              <div class="team-img">
+                <!-- <img class="img-responsive" src="images/team/x01.jpg" alt="" /> -->
+              </div>
+              <div class="team-info">
+                <h3>John Deo</h3>
+                <span>Manager</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div
+              class="team-member wow fadeInUp"
+              data-wow-duration="400ms"
+              data-wow-delay="100ms"
+            >
+              <div class="team-img">
+                <!-- <img class="img-responsive" src="images/team/x02.jpg" alt="" /> -->
+              </div>
+              <div class="team-info">
+                <h3>Mike Timobbs</h3>
+                <span>Manager</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div
+              class="team-member wow fadeInUp"
+              data-wow-duration="400ms"
+              data-wow-delay="200ms"
+            >
+              <div class="team-img">
+                <!-- <img class="img-responsive" src="images/team/x03.jpg" alt="" /> -->
+              </div>
+              <div class="team-info">
+                <h3>Remo Silvaus</h3>
+                <span>Manager</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div
+              class="team-member wow fadeInUp"
+              data-wow-duration="400ms"
+              data-wow-delay="300ms"
+            >
+              <div class="team-img">
+                <!-- <img class="img-responsive" src="images/team/x04.jpg" alt="" /> -->
+              </div>
+              <div class="team-info">
+                <h3>Niscal Deon</h3>
+                <span>Manager</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/#our-team-->
+
+    <section id="testimonial">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <div
+              id="carousel-testimonial"
+              class="carousel slide text-center"
+              data-ride="carousel"
+            >
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                  <p>
+                    <!-- <img class="img-thumbnail" src="images/xpic1.jpg" alt="" /> -->
+                  </p>
+                  <h4>John Deo</h4>
+                  <p>
+                    We work remotely from various locations in the city of
+                    Hyderabad.
+                  </p>
+                </div>
+                <div class="item">
+                  <p>
+                    <!-- <img class="img-thumbnail" src="images/xpic2.jpg" alt="" /> -->
+                  </p>
+                  <h4>Gramth Larry</h4>
+                  <p>
+                    Fusce non fermentum mi. Praesent vel lobortis elit. Nulla
+                    sodales, risus quis sollicitudin iaculis, felis dolor
+                    aliquet purus, eget elementum velit nunc eu dolor. Curabitur
+                    elit tellus, dictu.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Controls -->
+              <div class="btns">
+                <a
+                  class="btn btn-primary btn-sm"
+                  href="#carousel-testimonial"
+                  role="button"
+                  data-slide="prev"
+                >
+                  <span class="fa fa-angle-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a
+                  class="btn btn-primary btn-sm"
+                  href="#carousel-testimonial"
+                  role="button"
+                  data-slide="next"
+                >
+                  <span class="fa fa-angle-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/#testimonial-->
+
+    <section id="contact-us">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title text-center wow fadeInDown">Location</h2>
+          <p class="text-center wow fadeInDown">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            eget risus vitae massa <br />
+            semper aliquam quis mattis quam.
+          </p>
+        </div>
+      </div>
+    </section>
+    <div>
+      <!-- id="google-map"
+        style="height: 400px"
+        data-latitude="40.7141667"
+        data-longitude="-74.00638891" -->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d30457.3641564402!2d78.54611283098406!3d17.403602487626863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1610970422660!5m2!1sen!2sin"
+        width="100%"
+        height="450"
+        frameborder="0"
+        style="border: 0"
+        allowfullscreen=""
+        aria-hidden="false"
+        tabindex="0"
+      ></iframe>
+      >
+    </div>
+    <!--/#contact-us-->
+
+    <section id="contact">
+      <div class="container-wrapper">
+        <div class="container contact-info">
+          <div class="row">
+            <div class="col-sm-4 col-md-4">
+              <div class="contact-form">
+                <address>
+                  <strong>Mike's Car Wash.</strong><br />
+
+                  <abbr title="Phone">P: 9999999999
+                </address>
+              </div>
+            </div>
+            <div class="col-sm-8 col-md-8">
+              <div class="contact-form">
+                <!--NOTE: Update your email Id in "contact_me.php" file in order to receive emails from your contact form-->
+                <form name="sentMessage" id="contactForm" novalidate>
+                  <div class="control-group">
+                    <div class="controls">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Full Name"
+                        id="name"
+                        required
+                        data-validation-required-message="Please enter your name"
+                      />
+                      <p class="help-block"></p>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <div class="controls">
+                      <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Email"
+                        id="email"
+                        required
+                        data-validation-required-message="Please enter your email"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <div class="controls">
+                      <textarea
+                        rows="10"
+                        cols="100"
+                        class="form-control"
+                        placeholder="Message"
+                        id="message"
+                        required
+                        data-validation-required-message="Please enter your message"
+                        minlength="5"
+                        data-validation-minlength-message="Min 5 characters"
+                        maxlength="999"
+                        style="resize: none"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div id="success"></div>
+                  <!-- For success/fail messages -->
+                  <button type="submit" class="btn btn-primary pull-right">
+                    Send</button
+                  ><br />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/#bottom-->
+
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            &copy; 2018 Company Name.
+            <a href="https://webthemez.com/tag/free" target="_blank"
+              >Free Templates</a
+            >
+            by WebThemez.com
+          </div>
+          <div class="col-sm-6">
+            <ul class="social-icons">
+              <li>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-github"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!--/#footer-->
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script> -->
+    <!-- old db -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-database.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+      // Initialize Firebase
+      // firebase.initializeApp(firebaseConfig);
+      // firebase.analytics();
+    </script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/motorwash.js"></script>
+    <!-- <script src="js/security.js"></script> -->
+    <script src="https://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/mousescroll.js"></script>
+    <!-- <script src="js/smoothscroll.js"></script> -->
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/jquery.inview.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <!-- <script src="contact/jqBootstrapValidation.js"></script> -->
+    <!-- <script src="contact/contact_me.js"></script> -->
+    <!-- <script src="js/contact.js"></script> -->
+    <script src="js/custom-scripts.js"></script>
+  </body>
+</html>
