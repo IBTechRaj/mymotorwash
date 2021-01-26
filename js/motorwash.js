@@ -1,26 +1,26 @@
 $(document).ready(function () {
-  // var firebaseConfig = {
-  //   apiKey: "AIzaSyCT5Ecw3QINV0SU7mH2zJ8j2FC_-n_pV8s",
-  //   authDomain: "motorwash-8e684.firebaseapp.com",
-  //   projectId: "motorwash-8e684",
-  //   storageBucket: "motorwash-8e684.appspot.com",
-  //   messagingSenderId: "408982107627",
-  //   appId: "1:408982107627:web:8e463163cc988d970fd5ae",
-  //   measurementId: "G-X9LC6PLBT9"
-  // };
-
-  // firebase.initializeApp(firebaseConfig);
-
   var firebaseConfig = {
-    apiKey: "AIzaSyBG0GwvjzamTPpxYjrJVF3827Tyq232JLo",
-    authDomain: "rajdemo-422ad.firebaseapp.com",
-    projectId: "rajdemo-422ad",
-    storageBucket: "rajdemo-422ad.appspot.com",
-    messagingSenderId: "191311794966",
-    appId: "1:191311794966:web:f48d83e07e100debad7637",
-    measurementId: "G-CKK38CNBF0"
+    apiKey: "AIzaSyCT5Ecw3QINV0SU7mH2zJ8j2FC_-n_pV8s",
+    authDomain: "motorwash-8e684.firebaseapp.com",
+    projectId: "motorwash-8e684",
+    storageBucket: "motorwash-8e684.appspot.com",
+    messagingSenderId: "408982107627",
+    appId: "1:408982107627:web:8e463163cc988d970fd5ae",
+    measurementId: "G-X9LC6PLBT9"
   };
+
   firebase.initializeApp(firebaseConfig);
+
+  // var firebaseConfig = {
+  //   apiKey: "AIzaSyBG0GwvjzamTPpxYjrJVF3827Tyq232JLo",
+  //   authDomain: "rajdemo-422ad.firebaseapp.com",
+  //   projectId: "rajdemo-422ad",
+  //   storageBucket: "rajdemo-422ad.appspot.com",
+  //   messagingSenderId: "191311794966",
+  //   appId: "1:191311794966:web:f48d83e07e100debad7637",
+  //   measurementId: "G-CKK38CNBF0"
+  // };
+  // firebase.initializeApp(firebaseConfig);
 
   var Auth = firebase.auth();
   var dbRef = firebase.database();
