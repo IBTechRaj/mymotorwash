@@ -11,17 +11,6 @@ $(document).ready(function () {
 
   firebase.initializeApp(firebaseConfig);
 
-  // var firebaseConfig = {
-  //   apiKey: "AIzaSyBG0GwvjzamTPpxYjrJVF3827Tyq232JLo",
-  //   authDomain: "rajdemo-422ad.firebaseapp.com",
-  //   projectId: "rajdemo-422ad",
-  //   storageBucket: "rajdemo-422ad.appspot.com",
-  //   messagingSenderId: "191311794966",
-  //   appId: "1:191311794966:web:f48d83e07e100debad7637",
-  //   measurementId: "G-CKK38CNBF0"
-  // };
-  // firebase.initializeApp(firebaseConfig);
-
   var Auth = firebase.auth();
   var dbRef = firebase.database();
   var bookingsRef = dbRef.ref("bookings");
@@ -336,35 +325,8 @@ $(document).ready(function () {
       auth = user;
       $("body").removeClass("auth-false").addClass("auth-true");
       if (user.displayName) {
-        $(".user-info img").hide();
-        console.log("un1", user.displayName);
-        $(".user-info").append(
-          '<span class="user-name">' + user.displayName + "</span>"
-        );
+        document.getElementById("show-name").innerHTML = user.displayName;
       }
-      usersRef
-        .child(user.uid)
-        .once("value")
-        .then(function (data) {
-          var info = data.val();
-          console.log("un", user.displayName);
-          if (user.photoUrl) {
-            $(".user-info img").show();
-            $(".user-info img").attr("src", user.photoUrl);
-            $(".user-info .user-name").hide();
-          } else if (user.displayName) {
-            $(".user-info img").hide();
-            console.log("un", user.displayName);
-            $(".user-info").append(
-              '<span class="user-name">' + user.displayName + "</span>"
-            );
-          } else if (info.firstName) {
-            $(".user-info img").hide();
-            $(".user-info").append(
-              '<span class="user-name">' + info.firstName + "</span>"
-            );
-          }
-        });
       bookingsRef.child(user.uid).on("child_added", onChildAdd);
     } else {
       // No user is signed in.
