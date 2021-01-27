@@ -115,6 +115,7 @@ $(document).ready(function () {
               .then(function () {
                 console.log("User Information Saved:", user.uid);
               });
+            document.getElementById("show-name").innerHTML = user.displayName;
             $("#messageModalLabel").html(
               spanText(
                 "Success! " + "Thank you for registering " + user.displayName,
@@ -323,10 +324,13 @@ $(document).ready(function () {
     if (user) {
       console.log("namey", user.displayName);
       auth = user;
+      console.log("authey", auth.displayName);
+      console.log("n-a", user, auth);
       $("body").removeClass("auth-false").addClass("auth-true");
-      if (user.displayName) {
-        document.getElementById("show-name").innerHTML = user.displayName;
-      }
+      // if (user.displayName) {
+      // document.getElementById("show-name").innerHTML = "";
+      // document.getElementById("show-name").innerHTML = auth.displayName;
+      // }
       bookingsRef.child(user.uid).on("child_added", onChildAdd);
     } else {
       // No user is signed in.
