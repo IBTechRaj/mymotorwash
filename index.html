@@ -68,9 +68,15 @@
       <!--/nav-->
     </header>
     <!--/header-->
-
+<div class="row">
+<div class="col-md-3"></div>
+            <div class="col-md-6  feedback alert alert-success text-capitalize text-center"></div>
+            
+<div class="col-md-3"></div>
+          </div>
     <!-- Register Login Logout buttons -->
     <div class="col-md-12 sign-buttons pull-right">
+    
       <div class="userAuth unauthenticated pull-right">
         <button
           type="button"
@@ -99,8 +105,9 @@
         </button>
       </div>
 
-      <main class="authenticated">
-        <center>
+      <main class="authenticated text-left " style="margin-top: 30px">
+        <!-- <right> -->
+        
           <button
             type="button"
             class="btn btn-primary slot"
@@ -109,10 +116,14 @@
           >
             Book Your Slot
           </button>
-        </center>
+          
+        <!-- </right> -->
+        
         <div id="bookings"></div>
       </main>
+      
     </div>
+    
     <!-- begin registration modal form  -->
 
     <div

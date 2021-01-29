@@ -52,3 +52,23 @@ header + hr {
 .auth-false .authenticated {
   display: none;
 }
+.feedback {
+  display: none;
+}
+.results {
+  display: none;
+}
+.showItem {
+  display: block;
+  z-index: 10;
+}
+.booking {
+  display: inline-block;
+  margin: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  max-width: calc(25% - 2em);
+}
+.card-body {
+  padding: 1em 1em;
+}
