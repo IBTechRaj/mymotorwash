@@ -28,7 +28,8 @@ $(document).ready(function () {
     var data = {
       email: $('#registerEmail').val(),
       firstName: $('#registerFirstName').val(),
-      lastName: $('#registerLastName').val()
+      lastName: $('#registerLastName').val(),
+      userType: 'customer'
     }
     var passwords = {
       password: $('#registerPassword').val(),
@@ -101,6 +102,8 @@ $(document).ready(function () {
         .then(function (authData) {
           console.log('li ad', authData)
           auth = authData
+          console.log('userType:', auth.userType)
+          console.log('uty', usersRef.child(auth.user.uid))
           $('#messageModalLabel').html(
             spanText(
               'Login Success!' + ' ' + 'Welcome back ' + auth.user.displayName,
@@ -157,12 +160,18 @@ $(document).ready(function () {
     snap.forEach(function (childSnapshot) {
       var key = childSnapshot.key
       var childData = childSnapshot.val()
+      console.log('cd', childData)
     })
   })
 
   firebase.auth().onAuthStateChanged(function (user) {
     console.log('onAuthStateChanged')
+    // var cUType
+    // console.log('ud', usersRef.child(user.uid))
     if (user) {
+      getUserData(user.uid)
+      // console.log('cUType', cUType)
+      // usersRef.child(user.uid).on('child_added', onUserLogin)
       console.log('namey', user.displayName)
       auth = user
       console.log('authey', auth.displayName)
@@ -190,6 +199,45 @@ function onChildAdd(snap) {
   showFeedback('We have booked your Car Wash')
   // }
 }
+var curUserType
+function getUserData(uid) {
+  firebase
+    .database()
+    .ref('users/' + uid)
+    .once('value', snap => {
+      curUserType = snap.val().userType
+      console.log('cut', curUserType)
+
+      return curUserType
+    })
+
+  console.log('c', curUserType)
+  if (curUserType === 'customer') console.log('You are  a customer')
+}
+// if (curUserType != 'customer') {
+//   // showAllBookings()
+//   bookingsRef.on('child_added', function (snap) {
+//     console.log(snap.val())
+
+//     snap.forEach(function (childSnapshot) {
+//       var key = childSnapshot.key
+//       var childData = childSnapshot.val()
+//       console.log('cd', childData)
+//     })
+//   })
+// }
+
+// function showAllBookings() {
+//   bookingsRef.on('child_added', function (snap) {
+//     console.log(snap.val())
+
+//     snap.forEach(function (childSnapshot) {
+//       var key = childSnapshot.key
+//       var childData = childSnapshot.val()
+//       console.log('cd', childData)
+//     })
+//   })
+// }
 
 //prepare booking object's HTML
 function bookingHtmlFromObject(key, booking) {
