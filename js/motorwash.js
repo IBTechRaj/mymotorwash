@@ -170,7 +170,6 @@ $(document).ready(function () {
     // console.log('ud', usersRef.child(user.uid))
     if (user) {
       getUserData(user.uid)
-      // console.log('cUType', cUType)
       // usersRef.child(user.uid).on('child_added', onUserLogin)
       console.log('namey', user.displayName)
       auth = user
