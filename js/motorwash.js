@@ -120,6 +120,11 @@ $(document).ready(function () {
     }
   })
 
+  //booking date validation
+  function date_validation() {
+    console.log('date validation here')
+  }
+
   // Logout
   $('#logout').on('click', function (e) {
     e.preventDefault()
