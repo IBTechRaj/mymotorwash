@@ -171,23 +171,13 @@ $(document).ready(function () {
 
   firebase.auth().onAuthStateChanged(function (user) {
     console.log('onAuthStateChanged')
-    // var cUType
-    // console.log('ud', usersRef.child(user.uid))
     if (user) {
       getUserData(user.uid)
-      // usersRef.child(user.uid).on('child_added', onUserLogin)
-      // console.log('namey', user.displayName)
       auth = user
-      // console.log('authey', auth.displayName)
-      // console.log('n-a', user, auth)
       $('body').removeClass('auth-false').addClass('auth-true')
-      // if (user.displayName) {
-      // document.getElementById("show-name").innerHTML = "";
       document.getElementById('show-name').innerHTML = auth.displayName
-      // }
       bookingsRef.child(user.uid).on('child_added', onChildAdd)
     } else {
-      // No user is signed in.
       $('body').removeClass('auth-true').addClass('auth-false')
       auth && bookingsRef.child(auth.uid).off('child_added', onChildAdd)
       $('#bookings').html('')
@@ -199,9 +189,7 @@ $(document).ready(function () {
 var feedback = document.querySelector('.feedback')
 function onChildAdd(snap) {
   $('#bookings').append(bookingHtmlFromObject(snap.key, snap.val()))
-  // if (city.length === 0) {
   showFeedback('We have booked your Car Wash')
-  // }
 }
 var curUserType
 function getUserData(uid) {
@@ -218,42 +206,14 @@ function getUserData(uid) {
   console.log('c', curUserType)
   if (curUserType === 'customer') console.log('You are  a customer')
 }
-// if (curUserType != 'customer') {
-//   // showAllBookings()
-//   bookingsRef.on('child_added', function (snap) {
-//     console.log(snap.val())
-
-//     snap.forEach(function (childSnapshot) {
-//       var key = childSnapshot.key
-//       var childData = childSnapshot.val()
-//       console.log('cd', childData)
-//     })
-//   })
-// }
-
-// function showAllBookings() {
-//   bookingsRef.on('child_added', function (snap) {
-//     console.log(snap.val())
-
-//     snap.forEach(function (childSnapshot) {
-//       var key = childSnapshot.key
-//       var childData = childSnapshot.val()
-//       console.log('cd', childData)
-//     })
-//   })
-// }
 
 //prepare booking object's HTML
 function bookingHtmlFromObject(key, booking) {
   return (
-    // '<div class="row col-md-12 justify-content-center">' +
     '<div class="card booking text-left" style="width: 90rem; height= 10rem" id="' +
     key +
     '">' +
     '<div class="card-body"  style="background: white;">' +
-    // '<h4 class="card-title">' +
-    // 'Thank you for booking a car wash. Here are the details:' +
-    // '</h4>' +
     '<h5 class="card-title" style="color: green">' +
     'Your Booking Details ' +
     '</h5>' +
@@ -273,26 +233,7 @@ function bookingHtmlFromObject(key, booking) {
     booking.wash_time +
     '</h6>' +
     '<h4 class="card-title">' +
-    // 'Our person will call you a day before to confirm' +
     '</h4>' +
-    // '<p class="card-text" title="' +
-    // booking.location.door +
-    // '">' +
-    // booking.location.street +
-    // ", " +
-    // booking.location.sub_area +
-    // ", " +
-    // booking.location.main_area +
-    // ", " +
-    // booking.location.pin +
-    // ", " +
-    // booking.location.city +
-    // ", " +
-    // booking.location.state +
-    // "</p>" +
-    // + '<a href="#" class="card-link">Card link</a>'
-    // + '<a href="#" class="card-link">Another link</a>'
-    // '</div>' +
     '</div>' +
     '</div>'
   )
