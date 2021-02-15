@@ -171,10 +171,10 @@ $(document).ready(function () {
     if (user) {
       getUserData(user.uid)
       // usersRef.child(user.uid).on('child_added', onUserLogin)
-      console.log('namey', user.displayName)
+      // console.log('namey', user.displayName)
       auth = user
-      console.log('authey', auth.displayName)
-      console.log('n-a', user, auth)
+      // console.log('authey', auth.displayName)
+      // console.log('n-a', user, auth)
       $('body').removeClass('auth-false').addClass('auth-true')
       // if (user.displayName) {
       // document.getElementById("show-name").innerHTML = "";
