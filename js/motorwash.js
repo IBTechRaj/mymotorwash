@@ -123,6 +123,7 @@ $(document).ready(function () {
   //booking date validation
   function date_validation() {
     console.log('date validation here')
+    if (wash - date <= date()) wdate = false
   }
 
   // Logout
