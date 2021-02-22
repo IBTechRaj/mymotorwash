@@ -135,8 +135,10 @@ $(document).ready(function () {
   //save booking
   $('#bookingForm').on('submit', function (event) {
     event.preventDefault()
+    // if (new Date() > $('#wash-date').val()) return false
+    // if ($('#wash-date').val() <= new Date()) alert('Enter a future date')
     $('#addBookingModal').modal('hide')
-    if (auth != null) {
+    if (auth != null && new Date() < $('#wash-date').val()) {
       if ($('#name').val() != '' || $('#mobile').val() != '') {
         bookingsRef.child(auth.uid).push({
           name: $('#name').val(),
@@ -156,6 +158,7 @@ $(document).ready(function () {
         alert('Please fill at-lease name and mobile!')
       }
     } else {
+      alert('Please enter a date greater than today')
       //inform user to login
     }
   })
