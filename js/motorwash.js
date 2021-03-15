@@ -138,13 +138,20 @@ $(document).ready(function () {
     // if (new Date() > $('#wash-date').val()) return false
     // if ($('#wash-date').val() <= new Date()) alert('Enter a future date')
     $('#addBookingModal').modal('hide')
-    if (auth != null && new Date() < $('#wash-date').val()) {
+    var e = document.getElementById('Select2')
+    var washtime = e.options[e.selectedIndex].text
+    var today = new Date()
+    var wday = new Date($('#wash-date').val())
+    if (auth != null && today < wday) {
       if ($('#name').val() != '' || $('#mobile').val() != '') {
         bookingsRef.child(auth.uid).push({
           name: $('#name').val(),
           mobile: $('#mobile').val(),
           wash_date: $('#wash-date').val(),
-          wash_time: $('#wash-time').val(),
+          // wash_time: $( '#wash-time' ).val(),
+
+          wash_time: washtime,
+
           location: {
             door: $('#door').val(),
             street: $('#street').val(),
@@ -159,6 +166,7 @@ $(document).ready(function () {
       }
     } else {
       alert('Please enter a date greater than today')
+      console.log(wday, today)
       //inform user to login
     }
   })
