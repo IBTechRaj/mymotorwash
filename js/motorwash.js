@@ -1,3 +1,9 @@
+var customerEmail=''
+var custName=''
+var custMobile=''
+var custWashDate=''
+var custWashTime=''
+
 $(document).ready(function () {
   var firebaseConfig = {
     apiKey: 'AIzaSyCT5Ecw3QINV0SU7mH2zJ8j2FC_-n_pV8s',
@@ -16,6 +22,7 @@ $(document).ready(function () {
   var bookingsRef = dbRef.ref('bookings')
   var usersRef = dbRef.ref('users')
   var auth = null
+ 
 
   //Register
   $('#registerForm').on('submit', function (e) {
@@ -67,6 +74,22 @@ $(document).ready(function () {
                 ['center', 'success']
               )
             )
+            customerEmail=$('#registerEmail').val()
+            Email.send({
+              Host : "smtp.gmail.com",
+              Port: 587,
+              Username : "krs30018@gmail.com",
+              // Password : "R18@ajasekharush",
+              Password : "bjdgmqckmhiiitsh",
+              To : customerEmail,
+              From : "krs30018@gmail.com",
+              Subject : "Registration Confirmed",
+              // Body : "And this is the body"}).then( message => alert(message))
+              
+              Body : "<b>Dear " + customerEmail +"</b>" +","+  "<br/><br/>Thank you for registering for our car wash service. At present we are undertaking the followiong services: <br/>"
+              + "<br/><br/>Car water servicing" + "<br/>Car polishing" + "<br/>Fixing minor issues" +
+              "<br/><br/>We shall keep you informed of any new services when we start." 
+              +"<br/><br/>For any queries, please contact 99999 12345" + "<br/><br/><b>Service Executive</b>"+"<br/><b>MyMotorWash</b>"}).then( message => console.log(message))
           })
           .catch(function (error) {
             console.log('Error creating user:', error)
@@ -82,6 +105,7 @@ $(document).ready(function () {
     }
   })
 
+ 
   //Login
   $('#loginForm').on('submit', function (e) {
     e.preventDefault()
@@ -92,10 +116,12 @@ $(document).ready(function () {
     $('#messageModal').modal('show')
 
     if ($('#loginEmail').val() != '' && $('#loginPassword').val() != '') {
+      customerEmail=$('#loginEmail').val()
       var data = {
         email: $('#loginEmail').val(),
         password: $('#loginPassword').val()
       }
+      // alert(customerEmail)
       firebase
         .auth()
         .signInWithEmailAndPassword(data.email, data.password)
@@ -135,6 +161,17 @@ $(document).ready(function () {
   //save booking
   $('#bookingForm').on('submit', function (event) {
     event.preventDefault()
+    // if ($('#loginEmail').val() != '' && $('#loginPassword').val() != '') {
+    //   alert('available')
+    // }
+    //   else{
+    //   alert('gone')
+    // }
+    // var data = {
+    //   email: $('#loginEmail').val(),
+    //   password: $('#loginPassword').val()
+    // }
+   
     // if (new Date() > $('#wash-date').val()) return false
     // if ($('#wash-date').val() <= new Date()) alert('Enter a future date')
     $('#addBookingModal').modal('hide')
@@ -142,8 +179,10 @@ $(document).ready(function () {
     var washtime = e.options[e.selectedIndex].text
     var today = new Date()
     var wday = new Date($('#wash-date').val())
+    
     if (auth != null && today < wday) {
       if ($('#name').val() != '' || $('#mobile').val() != '') {
+        
         bookingsRef.child(auth.uid).push({
           name: $('#name').val(),
           mobile: $('#mobile').val(),
@@ -159,7 +198,29 @@ $(document).ready(function () {
             main_area: $('#main_area').val(),
             pin: $('#pin').val()
           }
+
         })
+        custName=$('#name').val()
+        custMobile=$('#mobile').val()
+        custWashDate=$('#wash-date').val()
+        custWashTime=washtime
+        // alert(customerEmail, custMobile, custName, custWashDate, custWashTime)
+        Email.send({
+          Host : "smtp.gmail.com",
+          Port: 587,
+          Username : "krs30018@gmail.com",
+          // Password : "R18@ajasekharush",
+          Password : "bjdgmqckmhiiitsh",
+          To : customerEmail,
+          From : "krs30018@gmail.com",
+          Subject : "Booking Confirmed",
+          // Body : "And this is the body"}).then( message => alert(message))
+          
+          Body : "<b>Dear " + custName  +"</b>,"+ "<br/><br/>Thank you for booking our car wash service. We confirm the details below : <br/>" + 
+          "<br/>Customer Name : " + custName + "<br/>Customer Mobile : " + custMobile +
+          "<br/>Appointment Date : " + custWashDate + "<br/>Appointment Time : " + custWashTime 
+          + "<br/><br/>For any queries, please contact 99999 12345" + "<br/><br/><b>Service Executive</b>" + "<br/><b>MyMotorWash</b>"}).then( message => console.log(message))
+          
         document.bookingForm.reset()
       } else {
         alert('Please fill at-lease name and mobile!')
@@ -201,6 +262,7 @@ $(document).ready(function () {
 var feedback = document.querySelector('.feedback')
 function onChildAdd(snap) {
   $('#bookings').append(bookingHtmlFromObject(snap.key, snap.val()))
+  // alert(snap.val())
   showFeedback('We have booked your Car Wash')
 }
 var curUserType
@@ -264,3 +326,4 @@ function showFeedback(text) {
     feedback.classList.remove('showItem')
   }, 3000)
 }
+
