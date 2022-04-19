@@ -78,9 +78,7 @@ $(document).ready(function () {
             Email.send({
               Host : "smtp.gmail.com",
               Port: 587,
-              Username : "krs30018@gmail.com",
-              // Password : "R18@ajasekharush",
-              Password : "bjdgmqckmhiiitsh",
+              
               To : customerEmail,
               From : "krs30018@gmail.com",
               Subject : "Registration Confirmed",
@@ -208,9 +206,7 @@ $(document).ready(function () {
         Email.send({
           Host : "smtp.gmail.com",
           Port: 587,
-          Username : "krs30018@gmail.com",
-          // Password : "R18@ajasekharush",
-          Password : "bjdgmqckmhiiitsh",
+         
           To : customerEmail,
           From : "krs30018@gmail.com",
           Subject : "Booking Confirmed",
